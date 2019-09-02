@@ -57,59 +57,122 @@
         // caller();
 
         // // 3
-        function test(num){
-            alert(num);
-        }
+        // function test(num){
+        //     alert(num);
+        // }
 
-        function tes2(){
-            alert("Another Test");
-        }
+        // function tes2(){
+        //     alert("Another Test");
+        // }
 
-        function caller(handler){
-            handler(10);
-        }
+        // function caller(handler){
+        //     handler(10);
+        // }
 
-        caller(test);
+        // caller(test);
 
 
 
-        class Input extends React.Component{
+        // class Input extends React.Component{
+        //     constructor(){
+        //         super();
+        //         this.state = {
+        //             value: 0
+        //         };
+        //     }
+
+        //     render(){
+        //         return <button onClick={() => {
+        //             this.setState({value: this.state.value+1});
+        //             this.props.click(this.state.value);
+        //         }}>Button</button>
+        //     }
+        // }
+
+        // class Counter extends React.Component{
+        //     constructor(){
+        //         super();
+        //         this.state = {
+        //             value: 0
+        //         };
+        //     }
+
+        //     render(){
+        //         return (
+        //             <>
+        //                 <Input click={(val) => this.setState({value: val})} />
+        //                 <span>
+        //                     {this.state.value}
+        //                 </span>
+        //             </>
+        //         );
+        //     }
+        // }
+
+
+        class Calculator extends React.Component{
             constructor(){
                 super();
                 this.state = {
-                    value: 0
+                    num1: 0,
+                    num2: 0,
+                    result: 0
                 };
+                this.addHandler = this.addHandler.bind(this);
+                this.subHandler = this.subHandler.bind(this);
+                this.timesHandler = this.timesHandler.bind(this);
+                this.divideHandler = this.divideHandler.bind(this);
+                this.modHandler = this.modHandler.bind(this);
+                this.num1Change = this.num1Change.bind(this);
+                this.num2Change = this.num2Change.bind(this);
             }
 
-            render(){
-                return <button onClick={() => {
-                    this.setState({value: this.state.value+1});
-                    this.props.click(this.state.value);
-                }}>Button</button>
+            addHandler(){
+                this.setState({result: this.state.num1+this.state.num2});
             }
-        }
 
-        class Counter extends React.Component{
-            constructor(){
-                super();
-                this.state = {
-                    value: 0
-                };
+            subHandler(){
+
+            }
+
+            timesHandler(){
+
+            }
+
+            divideHandler(){
+
+            }
+
+            modHandler(){
+
+            }
+
+            num1Change(e){
+                this.setState({num1: parseInt(e.target.value)});
+            }
+
+            num2Change(e){
+                this.setState({num2: parseInt(e.target.value)});
             }
 
             render(){
                 return (
                     <>
-                        <Input click={(val) => this.setState({value: val})} />
-                        <span>
-                            {this.state.value}
-                        </span>
+                        <input type="number" name="num1" value={this.state.num1} onChange={this.num1Change} />
+                        <input type="number" name="num2" value={this.state.num2} onChange={this.num2Change} />
+                        <input type="number" name="result" value={this.state.result} />
+                        <br/>
+                        <button onClick={this.addHandler}>+</button>
+                        <button onClick={this.subHandler}>-</button>
+                        <button onClick={this.timesHandler}>*</button>
+                        <button onClick={this.divideHandler}>/</button>
+                        <button onClick={this.modHandler}>%</button>
                     </>
                 );
             }
         }
 
-        ReactDOM.render(<Counter />, document.getElementById("app"));
+        ReactDOM.render(<Calculator />, document.getElementById("app"));
     </script>
 </body>
 </html>
