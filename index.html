@@ -4,14 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document HTML</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>ReactJS</title>
 </head>
 <body>
-    <h3>Hello World</h3>
-    <form>
-        <input type="text" name="username" />
-        <input type="text" name="password" />
-        <input type="submit" name="login" />
-    </form>
+    <div id="app">
+    </div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        // const H3 = () => <h3>Welcome To My Table</h3>;
+        // const Table = () =>
+        //         <table>
+        //             <thead>
+        //                 <th>No. </th>
+        //                 <th>Nama</th>
+        //             </thead>
+        //             <tbody>
+        //                 <tr>
+        //                     <td>1</td>
+        //                     <td>Galih</td>
+        //                 </tr>
+        //             </tbody>
+        //         </table>;
+        // const App = () =>
+        //     <div>
+        //         <H3/>
+        //         <Table/>
+        //     </div>;
+
+        // React Class Component
+
+        // 1
+        // function test(){
+        //     alert("Test Executed");
+        // }
+        // test();
+
+        // // 2
+        // function test(){
+        //     alert("Test Executed");
+        // }
+
+        // function caller(){
+        //     test();
+        // }
+
+        // caller();
+
+        // // 3
+        function test(num){
+            alert(num);
+        }
+
+        function tes2(){
+            alert("Another Test");
+        }
+
+        function caller(handler){
+            handler(10);
+        }
+
+        caller(test);
+
+
+
+        class Input extends React.Component{
+            constructor(){
+                super();
+                this.state = {
+                    value: 0
+                };
+            }
+
+            render(){
+                return <button onClick={() => {
+                    this.setState({value: this.state.value+1});
+                    this.props.click(this.state.value);
+                }}>Button</button>
+            }
+        }
+
+        class Counter extends React.Component{
+            constructor(){
+                super();
+                this.state = {
+                    value: 0
+                };
+            }
+
+            render(){
+                return (
+                    <>
+                        <Input click={(val) => this.setState({value: val})} />
+                        <span>
+                            {this.state.value}
+                        </span>
+                    </>
+                );
+            }
+        }
+
+        ReactDOM.render(<Counter />, document.getElementById("app"));
+    </script>
 </body>
 </html>
