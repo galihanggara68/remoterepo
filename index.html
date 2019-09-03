@@ -256,28 +256,56 @@
         // Conditional Rendering
         // Ternary Operator -->  kondisi ? true : false
 
-        class Conditional extends React.Component{
-            greet(num){
-                if(num > 1){
-                    return "Hello";
-                }else{
-                    return "Hey";
-                }
-            }
+        // class Conditional extends React.Component{
+        //     greet(num){
+        //         if(num > 1){
+        //             return "Hello";
+        //         }else{
+        //             return "Hey";
+        //         }
+        //     }
             
+        //     render(){
+        //         return (
+        //             <h3>
+        //                 Hello {this.props.num > 1 ? 
+        //                         (<a href="#">Link</a>) : 
+        //                         (<button>Btn</button>)
+        //                 }
+        //             </h3>
+        //         );
+        //     }
+        // }
+        // Array.map(callback(data);
+
+        // let fn = function(){
+        //     return 10;
+        // };
+
+        // let fn2 = a => a*10;
+        // ////////
+
+        // // let fn = function(){ 
+        // //     alert("Text"); 
+        // // }
+
+        // let fn2 = () => { 
+        //     alert("Text"); 
+        //     alert("");
+        // };
+
+        class Lists extends React.Component{
             render(){
+                let arr = ["Mobil", "Motor", "Becak"];
                 return (
-                    <h3>
-                        Hello {this.props.num > 1 ? 
-                                (<a href="#">Link</a>) : 
-                                (<button>Btn</button>)
-                        }
-                    </h3>
+                    <select>
+                        {arr.map(data => <option value={data}>{data}</option>)}
+                    </select>
                 );
             }
         }
 
-        ReactDOM.render(<Conditional num={1}/>, document.getElementById("app"));
+        ReactDOM.render(<Lists />, document.getElementById("app"));
     </script>
 </body>
 </html>
