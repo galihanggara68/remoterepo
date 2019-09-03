@@ -155,53 +155,7 @@
         //     }
         // }
 
-        // class FormLogin extends React.Component{
-        //     constructor(){
-        //         super();
-        //         this.state = {
-        //             username: "",
-        //             password: ""
-        //         };
-        //         this.usernameChange = this.usernameChange.bind(this);
-        //         this.passwordChange = this.passwordChange.bind(this);
-        //         this.login = this.login.bind(this);
-        //     }
-
-        //     usernameChange(e){
-        //         let data = {username: e.target.value};
-        //         this.setState(data);
-        //     }
-
-        //     passwordChange(e){
-        //         this.setState({password: e.target.value});
-        //     }
-
-        //     login(e){
-        //         e.preventDefault();
-        //         alert("Username : " + this.state.username 
-        //             + "\nPassword : " + this.state.password);
-        //     }
-
-        //     render(){
-        //         return (
-        //             <>
-        //                 <label for="username">Username : </label>
-        //                 <input type="text" 
-        //                     id="username" 
-        //                     value={this.state.username}
-        //                     onChange={this.usernameChange}/>
-        //                 <label for="password">Password : </label>
-        //                 <input type="password" 
-        //                     id="password" 
-        //                     value={this.state.password}
-        //                     onChange={this.passwordChange}/>
-        //                 <input type="submit" 
-        //                     value="Login" 
-        //                     onClick={this.login}/>
-        //             </>
-        //         );
-        //     }
-        // }
+        
 
         // class Controls extends React.Component{
         //     constructor(){
@@ -294,18 +248,83 @@
         //     alert("");
         // };
 
-        class Lists extends React.Component{
+        // class Lists extends React.Component{
+        //     render(){
+        //         let arr = ["Mobil", "Motor", "Becak"];
+        //         return (
+        //             <ul>
+        //                 {arr.map(data => <li>{data}</li>)}
+        //             </ul>
+        //         );
+        //     }
+        // }
+
+        class Input extends React.Component{
             render(){
-                let arr = ["Mobil", "Motor", "Becak"];
                 return (
-                    <select>
-                        {arr.map(data => <option value={data}>{data}</option>)}
-                    </select>
+                    <>
+                        <label for="username">Username : </label>
+                        <input type="text" 
+                            id="username" 
+                            value={this.props.username}
+                            onChange={this.props.onChange}/>
+                        <label for="password">Password : </label>
+                        <input type="password" 
+                            id="password" 
+                            value={this.props.password}
+                            onChange={this.props.onChange}/>
+                    </>
                 );
             }
         }
 
-        ReactDOM.render(<Lists />, document.getElementById("app"));
+        class Button extends React.Component{
+            render(){
+                return (
+                    <>
+                        <input type="submit" 
+                            value="Login" 
+                            onClick={this.props.click}/>
+                    </>
+                );
+            }
+        }
+
+        class FormLogin extends React.Component{
+            constructor(){
+                super();
+                this.state = {
+                    username: "",
+                    password: ""
+                };
+                this.inputChange = this.inputChange.bind(this);
+                this.login = this.login.bind(this);
+            }
+
+            inputChange(e){
+                console.log(e.target.value);
+                this.setState({[e.target.id]: e.target.value});
+            }
+
+            login(e){
+                e.preventDefault();
+                alert("Username : " + this.state.username 
+                    + "\nPassword : " + this.state.password);
+            }
+
+            render(){
+                return (
+                    <>
+                        <Input username={this.state.username} 
+                            password={this.state.password} 
+                            onChange={this.inputChange}/>
+                        <Button title="Login" click={this.login}/>
+                    </>
+                );
+            }
+        }
+
+        ReactDOM.render(<FormLogin />, document.getElementById("app"));
     </script>
 </body>
 </html>
