@@ -155,55 +155,129 @@
         //     }
         // }
 
-        class FormLogin extends React.Component{
-            constructor(){
-                super();
-                this.state = {
-                    username: "",
-                    password: ""
-                };
-                this.usernameChange = this.usernameChange.bind(this);
-                this.passwordChange = this.passwordChange.bind(this);
-                this.login = this.login.bind(this);
-            }
+        // class FormLogin extends React.Component{
+        //     constructor(){
+        //         super();
+        //         this.state = {
+        //             username: "",
+        //             password: ""
+        //         };
+        //         this.usernameChange = this.usernameChange.bind(this);
+        //         this.passwordChange = this.passwordChange.bind(this);
+        //         this.login = this.login.bind(this);
+        //     }
 
-            usernameChange(e){
-                let data = {username: e.target.value};
-                this.setState(data);
-            }
+        //     usernameChange(e){
+        //         let data = {username: e.target.value};
+        //         this.setState(data);
+        //     }
 
-            passwordChange(e){
-                this.setState({password: e.target.value});
-            }
+        //     passwordChange(e){
+        //         this.setState({password: e.target.value});
+        //     }
 
-            login(e){
-                e.preventDefault();
-                alert("Username : " + this.state.username 
-                    + "\nPassword : " + this.state.password);
-            }
+        //     login(e){
+        //         e.preventDefault();
+        //         alert("Username : " + this.state.username 
+        //             + "\nPassword : " + this.state.password);
+        //     }
 
+        //     render(){
+        //         return (
+        //             <>
+        //                 <label for="username">Username : </label>
+        //                 <input type="text" 
+        //                     id="username" 
+        //                     value={this.state.username}
+        //                     onChange={this.usernameChange}/>
+        //                 <label for="password">Password : </label>
+        //                 <input type="password" 
+        //                     id="password" 
+        //                     value={this.state.password}
+        //                     onChange={this.passwordChange}/>
+        //                 <input type="submit" 
+        //                     value="Login" 
+        //                     onClick={this.login}/>
+        //             </>
+        //         );
+        //     }
+        // }
+
+        // class Controls extends React.Component{
+        //     constructor(){
+        //         super();
+        //         this.state = {
+        //             dropDown: "0",
+        //             username: ""
+        //         }
+        //         this.inputChange = this.inputChange.bind(this);
+        //     }
+
+        //     inputChange(e){
+        //         this.setState({[e.target.name]: e.target.value});
+        //     }
+
+        //     render(){
+        //         if(this.state.dropDown == "1"){
+        //             return (
+        //                 <>
+        //                     <input type="checkbox" />
+        //                     <select value={this.state.dropDown}
+        //                         name="dropDown" 
+        //                         onChange={this.inputChange}>
+        //                         <option value="1">1</option>
+        //                         <option value="2">2</option>
+        //                         <option value="3">3</option>
+        //                     </select>
+        //                     {this.state.dropDown}
+        //                 </>
+        //             );
+        //         }else{
+        //             return (
+        //                 <>
+        //                     <input type="text" 
+        //                         name="username" 
+        //                         value={this.state.username}
+        //                         onChange={this.inputChange}/>
+        //                     <select value={this.state.dropDown}
+        //                         name="dropDown" 
+        //                         onChange={this.inputChange}>
+        //                         <option value="1">1</option>
+        //                         <option value="2">2</option>
+        //                         <option value="3">3</option>
+        //                     </select>
+        //                     {this.state.dropDown}
+        //                 </>
+        //             );
+        //         }
+        //     }
+        // }
+
+        // Conditional Rendering
+        // Ternary Operator -->  kondisi ? true : false
+
+        class Conditional extends React.Component{
+            greet(num){
+                if(num > 1){
+                    return "Hello";
+                }else{
+                    return "Hey";
+                }
+            }
+            
             render(){
                 return (
-                    <>
-                        <label for="username">Username : </label>
-                        <input type="text" 
-                            id="username" 
-                            value={this.state.username}
-                            onChange={this.usernameChange}/>
-                        <label for="password">Password : </label>
-                        <input type="password" 
-                            id="password" 
-                            value={this.state.password}
-                            onChange={this.passwordChange}/>
-                        <input type="submit" 
-                            value="Login" 
-                            onClick={this.login}/>
-                    </>
+                    <h3>
+                        Hello {this.props.num > 1 ? 
+                                (<a href="#">Link</a>) : 
+                                (<button>Btn</button>)
+                        }
+                    </h3>
                 );
             }
         }
 
-        ReactDOM.render(<FormLogin />, document.getElementById("app"));
+        ReactDOM.render(<Conditional num={1}/>, document.getElementById("app"));
     </script>
 </body>
 </html>
